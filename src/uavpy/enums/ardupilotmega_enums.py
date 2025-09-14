@@ -1,0 +1,517 @@
+from typing import Literal
+
+ACCELCAL_VEHICLE_POS = {
+    1: "LEVEL", "LEVEL": 1,
+    2: "LEFT", "LEFT": 2,
+    3: "RIGHT", "RIGHT": 3,
+    4: "NOSEDOWN", "NOSEDOWN": 4,
+    5: "NOSEUP", "NOSEUP": 5,
+    6: "BACK", "BACK": 6,
+    16777215: "SUCCESS", "SUCCESS": 16777215,
+    16777216: "FAILED", "FAILED": 16777216
+}
+AccelcalVehiclePos = Literal["LEVEL", "LEFT", "RIGHT", "NOSEDOWN", "NOSEUP", "BACK", "SUCCESS", "FAILED"]
+
+HEADING_TYPE = {
+    0: "COURSE_OVER_GROUND", "COURSE_OVER_GROUND": 0,
+    1: "HEADING", "HEADING": 1,
+    2: "DEFAULT", "DEFAULT": 2
+}
+HeadingType = Literal["COURSE_OVER_GROUND", "HEADING", "DEFAULT"]
+
+SCRIPTING_CMD = {
+    0: "REPL_START", "REPL_START": 0,
+    1: "REPL_STOP", "REPL_STOP": 1,
+    2: "STOP", "STOP": 2,
+    3: "STOP_AND_RESTART", "STOP_AND_RESTART": 3
+}
+ScriptingCmd = Literal["REPL_START", "REPL_STOP", "STOP", "STOP_AND_RESTART"]
+
+SECURE_COMMAND_OP = {
+    0: "GET_SESSION_KEY", "GET_SESSION_KEY": 0,
+    1: "GET_REMOTEID_SESSION_KEY", "GET_REMOTEID_SESSION_KEY": 1,
+    2: "REMOVE_PUBLIC_KEYS", "REMOVE_PUBLIC_KEYS": 2,
+    3: "GET_PUBLIC_KEYS", "GET_PUBLIC_KEYS": 3,
+    4: "SET_PUBLIC_KEYS", "SET_PUBLIC_KEYS": 4,
+    5: "GET_REMOTEID_CONFIG", "GET_REMOTEID_CONFIG": 5,
+    6: "SET_REMOTEID_CONFIG", "SET_REMOTEID_CONFIG": 6,
+    7: "FLASH_BOOTLOADER", "FLASH_BOOTLOADER": 7
+}
+SecureCommandOp = Literal[
+    "GET_SESSION_KEY", "GET_REMOTEID_SESSION_KEY", "REMOVE_PUBLIC_KEYS", "GET_PUBLIC_KEYS", "SET_PUBLIC_KEYS", "GET_REMOTEID_CONFIG", "SET_REMOTEID_CONFIG", "FLASH_BOOTLOADER"]
+
+LIMITS_STATE = {
+    0: "INIT", "INIT": 0,
+    1: "DISABLED", "DISABLED": 1,
+    2: "ENABLED", "ENABLED": 2,
+    3: "TRIGGERED", "TRIGGERED": 3,
+    4: "RECOVERING", "RECOVERING": 4,
+    5: "RECOVERED", "RECOVERED": 5
+}
+LimitsState = Literal["INIT", "DISABLED", "ENABLED", "TRIGGERED", "RECOVERING", "RECOVERED"]
+
+LIMIT_MODULE = {
+    1: "GPSLOCK", "GPSLOCK": 1,
+    2: "GEOFENCE", "GEOFENCE": 2,
+    4: "ALTITUDE", "ALTITUDE": 4
+}
+LimitModule = Literal["GPSLOCK", "GEOFENCE", "ALTITUDE"]
+
+RALLY_FLAGS = {
+    1: "FAVORABLE_WIND", "FAVORABLE_WIND": 1,
+    2: "LAND_IMMEDIATELY", "LAND_IMMEDIATELY": 2,
+    4: "ALT_FRAME_VALID", "ALT_FRAME_VALID": 4,
+    24: "ALT_FRAME", "ALT_FRAME": 24
+}
+RallyFlags = Literal["FAVORABLE_WIND", "LAND_IMMEDIATELY", "ALT_FRAME_VALID", "ALT_FRAME"]
+
+CAMERA_STATUS_TYPES = {
+    0: "HEARTBEAT", "HEARTBEAT": 0,
+    1: "TRIGGER", "TRIGGER": 1,
+    2: "DISCONNECT", "DISCONNECT": 2,
+    3: "ERROR", "ERROR": 3,
+    4: "LOWBATT", "LOWBATT": 4,
+    5: "LOWSTORE", "LOWSTORE": 5,
+    6: "LOWSTOREV", "LOWSTOREV": 6
+}
+CameraStatusTypes = Literal["HEARTBEAT", "TRIGGER", "DISCONNECT", "ERROR", "LOWBATT", "LOWSTORE", "LOWSTOREV"]
+
+CAMERA_FEEDBACK_FLAGS = {
+    0: "PHOTO", "PHOTO": 0,
+    1: "VIDEO", "VIDEO": 1,
+    2: "BADEXPOSURE", "BADEXPOSURE": 2,
+    3: "CLOSEDLOOP", "CLOSEDLOOP": 3,
+    4: "OPENLOOP", "OPENLOOP": 4
+}
+CameraFeedbackFlags = Literal["PHOTO", "VIDEO", "BADEXPOSURE", "CLOSEDLOOP", "OPENLOOP"]
+
+MAV_MODE_GIMBAL = {
+    0: "UNINITIALIZED", "UNINITIALIZED": 0,
+    1: "CALIBRATING_PITCH", "CALIBRATING_PITCH": 1,
+    2: "CALIBRATING_ROLL", "CALIBRATING_ROLL": 2,
+    3: "CALIBRATING_YAW", "CALIBRATING_YAW": 3,
+    4: "INITIALIZED", "INITIALIZED": 4,
+    5: "ACTIVE", "ACTIVE": 5,
+    6: "RATE_CMD_TIMEOUT", "RATE_CMD_TIMEOUT": 6
+}
+MavModeGimbal = Literal[
+    "UNINITIALIZED", "CALIBRATING_PITCH", "CALIBRATING_ROLL", "CALIBRATING_YAW", "INITIALIZED", "ACTIVE", "RATE_CMD_TIMEOUT"]
+
+GIMBAL_AXIS = {
+    0: "YAW", "YAW": 0,
+    1: "PITCH", "PITCH": 1,
+    2: "ROLL", "ROLL": 2
+}
+GimbalAxis = Literal["YAW", "PITCH", "ROLL"]
+
+GIMBAL_AXIS_CALIBRATION_STATUS = {
+    0: "IN_PROGRESS", "IN_PROGRESS": 0,
+    1: "SUCCEEDED", "SUCCEEDED": 1,
+    2: "FAILED", "FAILED": 2
+}
+GimbalAxisCalibrationStatus = Literal["IN_PROGRESS", "SUCCEEDED", "FAILED"]
+
+GIMBAL_AXIS_CALIBRATION_REQUIRED = {
+    0: "UNKNOWN", "UNKNOWN": 0,
+    1: "TRUE", "TRUE": 1,
+    2: "FALSE", "FALSE": 2
+}
+GimbalAxisCalibrationRequired = Literal["UNKNOWN", "TRUE", "FALSE"]
+
+GOPRO_HEARTBEAT_STATUS = {
+    0: "DISCONNECTED", "DISCONNECTED": 0,
+    1: "INCOMPATIBLE", "INCOMPATIBLE": 1,
+    2: "CONNECTED", "CONNECTED": 2,
+    3: "ERROR", "ERROR": 3
+}
+GoproHeartbeatStatus = Literal["DISCONNECTED", "INCOMPATIBLE", "CONNECTED", "ERROR"]
+
+GOPRO_HEARTBEAT_FLAGS = {
+    1: "RECORDING", "RECORDING": 1
+}
+GoproHeartbeatFlags = Literal["RECORDING"]
+
+GOPRO_REQUEST_STATUS = {
+    0: "SUCCESS", "SUCCESS": 0,
+    1: "FAILED", "FAILED": 1
+}
+GoproRequestStatus = Literal["SUCCESS", "FAILED"]
+
+GOPRO_COMMAND = {
+    0: "POWER", "POWER": 0,
+    1: "CAPTURE_MODE", "CAPTURE_MODE": 1,
+    2: "SHUTTER", "SHUTTER": 2,
+    3: "BATTERY", "BATTERY": 3,
+    4: "MODEL", "MODEL": 4,
+    5: "VIDEO_SETTINGS", "VIDEO_SETTINGS": 5,
+    6: "LOW_LIGHT", "LOW_LIGHT": 6,
+    7: "PHOTO_RESOLUTION", "PHOTO_RESOLUTION": 7,
+    8: "PHOTO_BURST_RATE", "PHOTO_BURST_RATE": 8,
+    9: "PROTUNE", "PROTUNE": 9,
+    10: "PROTUNE_WHITE_BALANCE", "PROTUNE_WHITE_BALANCE": 10,
+    11: "PROTUNE_COLOUR", "PROTUNE_COLOUR": 11,
+    12: "PROTUNE_GAIN", "PROTUNE_GAIN": 12,
+    13: "PROTUNE_SHARPNESS", "PROTUNE_SHARPNESS": 13,
+    14: "PROTUNE_EXPOSURE", "PROTUNE_EXPOSURE": 14,
+    15: "TIME", "TIME": 15,
+    16: "CHARGING", "CHARGING": 16
+}
+GoproCommand = Literal[
+    "POWER", "CAPTURE_MODE", "SHUTTER", "BATTERY", "MODEL", "VIDEO_SETTINGS", "LOW_LIGHT", "PHOTO_RESOLUTION", "PHOTO_BURST_RATE", "PROTUNE", "PROTUNE_WHITE_BALANCE", "PROTUNE_COLOUR", "PROTUNE_GAIN", "PROTUNE_SHARPNESS", "PROTUNE_EXPOSURE", "TIME", "CHARGING"]
+
+GOPRO_CAPTURE_MODE = {
+    0: "VIDEO", "VIDEO": 0,
+    1: "PHOTO", "PHOTO": 1,
+    2: "BURST", "BURST": 2,
+    3: "TIME_LAPSE", "TIME_LAPSE": 3,
+    4: "MULTI_SHOT", "MULTI_SHOT": 4,
+    5: "PLAYBACK", "PLAYBACK": 5,
+    6: "SETUP", "SETUP": 6,
+    255: "UNKNOWN", "UNKNOWN": 255
+}
+GoproCaptureMode = Literal["VIDEO", "PHOTO", "BURST", "TIME_LAPSE", "MULTI_SHOT", "PLAYBACK", "SETUP", "UNKNOWN"]
+
+GOPRO_RESOLUTION = {
+    0: "480p", "480p": 0,
+    1: "720p", "720p": 1,
+    2: "960p", "960p": 2,
+    3: "1080p", "1080p": 3,
+    4: "1440p", "1440p": 4,
+    5: "2_7k_17_9", "2_7k_17_9": 5,
+    6: "2_7k_16_9", "2_7k_16_9": 6,
+    7: "2_7k_4_3", "2_7k_4_3": 7,
+    8: "4k_16_9", "4k_16_9": 8,
+    9: "4k_17_9", "4k_17_9": 9,
+    10: "720p_SUPERVIEW", "720p_SUPERVIEW": 10,
+    11: "1080p_SUPERVIEW", "1080p_SUPERVIEW": 11,
+    12: "2_7k_SUPERVIEW", "2_7k_SUPERVIEW": 12,
+    13: "4k_SUPERVIEW", "4k_SUPERVIEW": 13
+}
+GoproResolution = Literal[
+    "480p", "720p", "960p", "1080p", "1440p", "2_7k_17_9", "2_7k_16_9", "2_7k_4_3", "4k_16_9", "4k_17_9", "720p_SUPERVIEW", "1080p_SUPERVIEW", "2_7k_SUPERVIEW", "4k_SUPERVIEW"]
+
+GOPRO_FRAME_RATE = {
+    0: "12", "12": 0,
+    1: "15", "15": 1,
+    2: "24", "24": 2,
+    3: "25", "25": 3,
+    4: "30", "30": 4,
+    5: "48", "48": 5,
+    6: "50", "50": 6,
+    7: "60", "60": 7,
+    8: "80", "80": 8,
+    9: "90", "90": 9,
+    10: "100", "100": 10,
+    11: "120", "120": 11,
+    12: "240", "240": 12,
+    13: "12_5", "12_5": 13
+}
+GoproFrameRate = Literal["12", "15", "24", "25", "30", "48", "50", "60", "80", "90", "100", "120", "240", "12_5"]
+
+GOPRO_FIELD_OF_VIEW = {
+    0: "WIDE", "WIDE": 0,
+    1: "MEDIUM", "MEDIUM": 1,
+    2: "NARROW", "NARROW": 2
+}
+GoproFieldOfView = Literal["WIDE", "MEDIUM", "NARROW"]
+
+GOPRO_VIDEO_SETTINGS_FLAGS = {
+    1: "TV_MODE", "TV_MODE": 1
+}
+GoproVideoSettingsFlags = Literal["TV_MODE"]
+
+GOPRO_PHOTO_RESOLUTION = {
+    0: "5MP_MEDIUM", "5MP_MEDIUM": 0,
+    1: "7MP_MEDIUM", "7MP_MEDIUM": 1,
+    2: "7MP_WIDE", "7MP_WIDE": 2,
+    3: "10MP_WIDE", "10MP_WIDE": 3,
+    4: "12MP_WIDE", "12MP_WIDE": 4
+}
+GoproPhotoResolution = Literal["5MP_MEDIUM", "7MP_MEDIUM", "7MP_WIDE", "10MP_WIDE", "12MP_WIDE"]
+
+GOPRO_PROTUNE_WHITE_BALANCE = {
+    0: "AUTO", "AUTO": 0,
+    1: "3000K", "3000K": 1,
+    2: "5500K", "5500K": 2,
+    3: "6500K", "6500K": 3,
+    4: "RAW", "RAW": 4
+}
+GoproProtuneWhiteBalance = Literal["AUTO", "3000K", "5500K", "6500K", "RAW"]
+
+GOPRO_PROTUNE_COLOUR = {
+    0: "STANDARD", "STANDARD": 0,
+    1: "NEUTRAL", "NEUTRAL": 1
+}
+GoproProtuneColour = Literal["STANDARD", "NEUTRAL"]
+
+GOPRO_PROTUNE_GAIN = {
+    0: "400", "400": 0,
+    1: "800", "800": 1,
+    2: "1600", "1600": 2,
+    3: "3200", "3200": 3,
+    4: "6400", "6400": 4
+}
+GoproProtuneGain = Literal["400", "800", "1600", "3200", "6400"]
+
+GOPRO_PROTUNE_SHARPNESS = {
+    0: "LOW", "LOW": 0,
+    1: "MEDIUM", "MEDIUM": 1,
+    2: "HIGH", "HIGH": 2
+}
+GoproProtuneSharpness = Literal["LOW", "MEDIUM", "HIGH"]
+
+GOPRO_PROTUNE_EXPOSURE = {
+    0: "NEG_5_0", "NEG_5_0": 0,
+    1: "NEG_4_5", "NEG_4_5": 1,
+    2: "NEG_4_0", "NEG_4_0": 2,
+    3: "NEG_3_5", "NEG_3_5": 3,
+    4: "NEG_3_0", "NEG_3_0": 4,
+    5: "NEG_2_5", "NEG_2_5": 5,
+    6: "NEG_2_0", "NEG_2_0": 6,
+    7: "NEG_1_5", "NEG_1_5": 7,
+    8: "NEG_1_0", "NEG_1_0": 8,
+    9: "NEG_0_5", "NEG_0_5": 9,
+    10: "ZERO", "ZERO": 10,
+    11: "POS_0_5", "POS_0_5": 11,
+    12: "POS_1_0", "POS_1_0": 12,
+    13: "POS_1_5", "POS_1_5": 13,
+    14: "POS_2_0", "POS_2_0": 14,
+    15: "POS_2_5", "POS_2_5": 15,
+    16: "POS_3_0", "POS_3_0": 16,
+    17: "POS_3_5", "POS_3_5": 17,
+    18: "POS_4_0", "POS_4_0": 18,
+    19: "POS_4_5", "POS_4_5": 19,
+    20: "POS_5_0", "POS_5_0": 20
+}
+GoproProtuneExposure = Literal[
+    "NEG_5_0", "NEG_4_5", "NEG_4_0", "NEG_3_5", "NEG_3_0", "NEG_2_5", "NEG_2_0", "NEG_1_5", "NEG_1_0", "NEG_0_5", "ZERO", "POS_0_5", "POS_1_0", "POS_1_5", "POS_2_0", "POS_2_5", "POS_3_0", "POS_3_5", "POS_4_0", "POS_4_5", "POS_5_0"]
+
+GOPRO_CHARGING = {
+    0: "DISABLED", "DISABLED": 0,
+    1: "ENABLED", "ENABLED": 1
+}
+GoproCharging = Literal["DISABLED", "ENABLED"]
+
+GOPRO_MODEL = {
+    0: "UNKNOWN", "UNKNOWN": 0,
+    1: "HERO_3_PLUS_SILVER", "HERO_3_PLUS_SILVER": 1,
+    2: "HERO_3_PLUS_BLACK", "HERO_3_PLUS_BLACK": 2,
+    3: "HERO_4_SILVER", "HERO_4_SILVER": 3,
+    4: "HERO_4_BLACK", "HERO_4_BLACK": 4
+}
+GoproModel = Literal["UNKNOWN", "HERO_3_PLUS_SILVER", "HERO_3_PLUS_BLACK", "HERO_4_SILVER", "HERO_4_BLACK"]
+
+GOPRO_BURST_RATE = {
+    0: "3_IN_1_SECOND", "3_IN_1_SECOND": 0,
+    1: "5_IN_1_SECOND", "5_IN_1_SECOND": 1,
+    2: "10_IN_1_SECOND", "10_IN_1_SECOND": 2,
+    3: "10_IN_2_SECOND", "10_IN_2_SECOND": 3,
+    4: "10_IN_3_SECOND", "10_IN_3_SECOND": 4,
+    5: "30_IN_1_SECOND", "30_IN_1_SECOND": 5,
+    6: "30_IN_2_SECOND", "30_IN_2_SECOND": 6,
+    7: "30_IN_3_SECOND", "30_IN_3_SECOND": 7,
+    8: "30_IN_6_SECOND", "30_IN_6_SECOND": 8
+}
+GoproBurstRate = Literal[
+    "3_IN_1_SECOND", "5_IN_1_SECOND", "10_IN_1_SECOND", "10_IN_2_SECOND", "10_IN_3_SECOND", "30_IN_1_SECOND", "30_IN_2_SECOND", "30_IN_3_SECOND", "30_IN_6_SECOND"]
+
+MAV_CMD_DO_AUX_FUNCTION_SWITCH_LEVEL = {
+    0: "LOW", "LOW": 0,
+    1: "MIDDLE", "MIDDLE": 1,
+    2: "HIGH", "HIGH": 2
+}
+MavCmdDoAuxFunctionSwitchLevel = Literal["LOW", "MIDDLE", "HIGH"]
+
+LED_CONTROL_PATTERN = {
+    0: "OFF", "OFF": 0,
+    1: "FIRMWAREUPDATE", "FIRMWAREUPDATE": 1,
+    255: "CUSTOM", "CUSTOM": 255
+}
+LedControlPattern = Literal["OFF", "FIRMWAREUPDATE", "CUSTOM"]
+
+EKF_STATUS_FLAGS = {
+    1: "ATTITUDE", "ATTITUDE": 1,
+    2: "VELOCITY_HORIZ", "VELOCITY_HORIZ": 2,
+    4: "VELOCITY_VERT", "VELOCITY_VERT": 4,
+    8: "POS_HORIZ_REL", "POS_HORIZ_REL": 8,
+    16: "POS_HORIZ_ABS", "POS_HORIZ_ABS": 16,
+    32: "POS_VERT_ABS", "POS_VERT_ABS": 32,
+    64: "POS_VERT_AGL", "POS_VERT_AGL": 64,
+    128: "CONST_POS_MODE", "CONST_POS_MODE": 128,
+    256: "PRED_POS_HORIZ_REL", "PRED_POS_HORIZ_REL": 256,
+    512: "PRED_POS_HORIZ_ABS", "PRED_POS_HORIZ_ABS": 512,
+    1024: "UNINITIALIZED", "UNINITIALIZED": 1024,
+    32768: "GPS_GLITCHING", "GPS_GLITCHING": 32768
+}
+EkfStatusFlags = Literal[
+    "ATTITUDE", "VELOCITY_HORIZ", "VELOCITY_VERT", "POS_HORIZ_REL", "POS_HORIZ_ABS", "POS_VERT_ABS", "POS_VERT_AGL", "CONST_POS_MODE", "PRED_POS_HORIZ_REL", "PRED_POS_HORIZ_ABS", "UNINITIALIZED", "GPS_GLITCHING"]
+
+PID_TUNING_AXIS = {
+    1: "ROLL", "ROLL": 1,
+    2: "PITCH", "PITCH": 2,
+    3: "YAW", "YAW": 3,
+    4: "ACCZ", "ACCZ": 4,
+    5: "STEER", "STEER": 5,
+    6: "LANDING", "LANDING": 6
+}
+PidTuningAxis = Literal["ROLL", "PITCH", "YAW", "ACCZ", "STEER", "LANDING"]
+
+MAV_REMOTE_LOG_DATA_BLOCK_COMMANDS = {
+    2147483645: "OP", "OP": 2147483645,
+    2147483646: "ART", "ART": 2147483646
+}
+MavRemoteLogDataBlockCommands = Literal["OP", "ART"]
+
+MAV_REMOTE_LOG_DATA_BLOCK_STATUSES = {
+    0: "NACK", "NACK": 0,
+    1: "ACK", "ACK": 1
+}
+MavRemoteLogDataBlockStatuses = Literal["NACK", "ACK"]
+
+DEVICE_OP_BUSTYPE = {
+    0: "I2C", "I2C": 0,
+    1: "SPI", "SPI": 1
+}
+DeviceOpBustype = Literal["I2C", "SPI"]
+
+DEEPSTALL_STAGE = {
+    0: "FLY_TO_LANDING", "FLY_TO_LANDING": 0,
+    1: "ESTIMATE_WIND", "ESTIMATE_WIND": 1,
+    2: "WAIT_FOR_BREAKOUT", "WAIT_FOR_BREAKOUT": 2,
+    3: "FLY_TO_ARC", "FLY_TO_ARC": 3,
+    4: "ARC", "ARC": 4,
+    5: "APPROACH", "APPROACH": 5,
+    6: "LAND", "LAND": 6
+}
+DeepstallStage = Literal[
+    "FLY_TO_LANDING", "ESTIMATE_WIND", "WAIT_FOR_BREAKOUT", "FLY_TO_ARC", "ARC", "APPROACH", "LAND"]
+
+PLANE_MODE = {
+    0: "MANUAL", "MANUAL": 0,
+    1: "CIRCLE", "CIRCLE": 1,
+    2: "STABILIZE", "STABILIZE": 2,
+    3: "TRAINING", "TRAINING": 3,
+    4: "ACRO", "ACRO": 4,
+    5: "FLY_BY_WIRE_A", "FLY_BY_WIRE_A": 5,
+    6: "FLY_BY_WIRE_B", "FLY_BY_WIRE_B": 6,
+    7: "CRUISE", "CRUISE": 7,
+    8: "AUTOTUNE", "AUTOTUNE": 8,
+    10: "AUTO", "AUTO": 10,
+    11: "RTL", "RTL": 11,
+    12: "LOITER", "LOITER": 12,
+    13: "TAKEOFF", "TAKEOFF": 13,
+    14: "AVOID_ADSB", "AVOID_ADSB": 14,
+    15: "GUIDED", "GUIDED": 15,
+    16: "INITIALIZING", "INITIALIZING": 16,
+    17: "QSTABILIZE", "QSTABILIZE": 17,
+    18: "QHOVER", "QHOVER": 18,
+    19: "QLOITER", "QLOITER": 19,
+    20: "QLAND", "QLAND": 20,
+    21: "QRTL", "QRTL": 21,
+    22: "QAUTOTUNE", "QAUTOTUNE": 22,
+    23: "QACRO", "QACRO": 23,
+    24: "THERMAL", "THERMAL": 24,
+    25: "LOITER_ALT_QLAND", "LOITER_ALT_QLAND": 25,
+    26: "AUTOLAND", "AUTOLAND": 26
+}
+PlaneMode = Literal[
+    "MANUAL", "CIRCLE", "STABILIZE", "TRAINING", "ACRO", "FLY_BY_WIRE_A", "FLY_BY_WIRE_B", "CRUISE", "AUTOTUNE", "AUTO", "RTL", "LOITER", "TAKEOFF", "AVOID_ADSB", "GUIDED", "INITIALIZING", "QSTABILIZE", "QHOVER", "QLOITER", "QLAND", "QRTL", "QAUTOTUNE", "QACRO", "THERMAL", "LOITER_ALT_QLAND", "AUTOLAND"]
+
+COPTER_MODE = {
+    0: "STABILIZE", "STABILIZE": 0,
+    1: "ACRO", "ACRO": 1,
+    2: "ALT_HOLD", "ALT_HOLD": 2,
+    3: "AUTO", "AUTO": 3,
+    4: "GUIDED", "GUIDED": 4,
+    5: "LOITER", "LOITER": 5,
+    6: "RTL", "RTL": 6,
+    7: "CIRCLE", "CIRCLE": 7,
+    9: "LAND", "LAND": 9,
+    11: "DRIFT", "DRIFT": 11,
+    13: "SPORT", "SPORT": 13,
+    14: "FLIP", "FLIP": 14,
+    15: "AUTOTUNE", "AUTOTUNE": 15,
+    16: "POSHOLD", "POSHOLD": 16,
+    17: "BRAKE", "BRAKE": 17,
+    18: "THROW", "THROW": 18,
+    19: "AVOID_ADSB", "AVOID_ADSB": 19,
+    20: "GUIDED_NOGPS", "GUIDED_NOGPS": 20,
+    21: "SMART_RTL", "SMART_RTL": 21,
+    22: "FLOWHOLD", "FLOWHOLD": 22,
+    23: "FOLLOW", "FOLLOW": 23,
+    24: "ZIGZAG", "ZIGZAG": 24,
+    25: "SYSTEMID", "SYSTEMID": 25,
+    26: "AUTOROTATE", "AUTOROTATE": 26,
+    27: "AUTO_RTL", "AUTO_RTL": 27,
+    28: "TURTLE", "TURTLE": 28
+}
+CopterMode = Literal[
+    "STABILIZE", "ACRO", "ALT_HOLD", "AUTO", "GUIDED", "LOITER", "RTL", "CIRCLE", "LAND", "DRIFT", "SPORT", "FLIP", "AUTOTUNE", "POSHOLD", "BRAKE", "THROW", "AVOID_ADSB", "GUIDED_NOGPS", "SMART_RTL", "FLOWHOLD", "FOLLOW", "ZIGZAG", "SYSTEMID", "AUTOROTATE", "AUTO_RTL", "TURTLE"]
+
+SUB_MODE = {
+    0: "STABILIZE", "STABILIZE": 0,
+    1: "ACRO", "ACRO": 1,
+    2: "ALT_HOLD", "ALT_HOLD": 2,
+    3: "AUTO", "AUTO": 3,
+    4: "GUIDED", "GUIDED": 4,
+    7: "CIRCLE", "CIRCLE": 7,
+    9: "SURFACE", "SURFACE": 9,
+    16: "POSHOLD", "POSHOLD": 16,
+    19: "MANUAL", "MANUAL": 19,
+    20: "MOTORDETECT", "MOTORDETECT": 20,
+    21: "SURFTRAK", "SURFTRAK": 21
+}
+SubMode = Literal[
+    "STABILIZE", "ACRO", "ALT_HOLD", "AUTO", "GUIDED", "CIRCLE", "SURFACE", "POSHOLD", "MANUAL", "MOTORDETECT", "SURFTRAK"]
+
+ROVER_MODE = {
+    0: "MANUAL", "MANUAL": 0,
+    1: "ACRO", "ACRO": 1,
+    3: "STEERING", "STEERING": 3,
+    4: "HOLD", "HOLD": 4,
+    5: "LOITER", "LOITER": 5,
+    6: "FOLLOW", "FOLLOW": 6,
+    7: "SIMPLE", "SIMPLE": 7,
+    8: "DOCK", "DOCK": 8,
+    9: "CIRCLE", "CIRCLE": 9,
+    10: "AUTO", "AUTO": 10,
+    11: "RTL", "RTL": 11,
+    12: "SMART_RTL", "SMART_RTL": 12,
+    15: "GUIDED", "GUIDED": 15,
+    16: "INITIALIZING", "INITIALIZING": 16
+}
+RoverMode = Literal[
+    "MANUAL", "ACRO", "STEERING", "HOLD", "LOITER", "FOLLOW", "SIMPLE", "DOCK", "CIRCLE", "AUTO", "RTL", "SMART_RTL", "GUIDED", "INITIALIZING"]
+
+TRACKER_MODE = {
+    0: "MANUAL", "MANUAL": 0,
+    1: "STOP", "STOP": 1,
+    2: "SCAN", "SCAN": 2,
+    3: "SERVO_TEST", "SERVO_TEST": 3,
+    4: "GUIDED", "GUIDED": 4,
+    10: "AUTO", "AUTO": 10,
+    16: "INITIALIZING", "INITIALIZING": 16
+}
+TrackerMode = Literal["MANUAL", "STOP", "SCAN", "SERVO_TEST", "GUIDED", "AUTO", "INITIALIZING"]
+
+OSD_PARAM_CONFIG_TYPE = {
+    0: "NONE", "NONE": 0,
+    1: "SERIAL_PROTOCOL", "SERIAL_PROTOCOL": 1,
+    2: "SERVO_FUNCTION", "SERVO_FUNCTION": 2,
+    3: "AUX_FUNCTION", "AUX_FUNCTION": 3,
+    4: "FLIGHT_MODE", "FLIGHT_MODE": 4,
+    5: "FAILSAFE_ACTION", "FAILSAFE_ACTION": 5,
+    6: "FAILSAFE_ACTION_1", "FAILSAFE_ACTION_1": 6,
+    7: "FAILSAFE_ACTION_2", "FAILSAFE_ACTION_2": 7,
+    8: "NUM_TYPES", "NUM_TYPES": 8
+}
+OsdParamConfigType = Literal[
+    "NONE", "SERIAL_PROTOCOL", "SERVO_FUNCTION", "AUX_FUNCTION", "FLIGHT_MODE", "FAILSAFE_ACTION", "FAILSAFE_ACTION_1", "FAILSAFE_ACTION_2", "NUM_TYPES"]
+
+OSD_PARAM_CONFIG_ERROR = {
+    0: "SUCCESS", "SUCCESS": 0,
+    1: "INVALID_SCREEN", "INVALID_SCREEN": 1,
+    2: "INVALID_PARAMETER_INDEX", "INVALID_PARAMETER_INDEX": 2,
+    3: "INVALID_PARAMETER", "INVALID_PARAMETER": 3
+}
+OsdParamConfigError = Literal["SUCCESS", "INVALID_SCREEN", "INVALID_PARAMETER_INDEX", "INVALID_PARAMETER"]

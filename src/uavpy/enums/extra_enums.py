@@ -1,0 +1,33 @@
+from typing import Literal, Union
+
+CONTROL_ACKNOWLEDGEMENT = {
+    0: "ACCEPTED", "ACCEPTED": 0,
+    1: "WRONG_PASSKEY", "WRONG_PASSKEY": 1,
+    2: "UNSUPPORTED_ENCRYPTION", "UNSUPPORTED_ENCRYPTION": 2,
+    3: "ALREADY_UNDER_CONTROL", "ALREADY_UNDER_CONTROL": 3
+}
+
+PX4_CUSTOM_MODES = {
+    0: "MANUAL", "MANUAL": 0,
+    1: "ALTCTL", "ALTCTL": 1,
+    2: "POSCTL", "POSCTL": 2,
+    3: "MISSION", "MISSION": 3,
+    4: "LOITER", "LOITER": 4,
+    5: "RTL", "RTL": 5,
+    6: "ACRO", "ACRO": 6,
+    7: "OFFBOARD", "OFFBOARD": 7,
+    8: "STABILIZED", "STABILIZED": 8,
+    9: "RATTITUDE", "RATTITUDE": 9,
+    10: "TAKEOFF", "TAKEOFF": 10,
+    11: "LAND", "LAND": 11,
+    12: "FOLLOW_TARGET", "FOLLOW_TARGET": 12
+}
+
+CommandAckResponse = Union[
+    Literal[True],
+    float,
+    Literal[
+        "TEMPORARILY_REJECTED", "DENIED", "UNSUPPORTED", "FAILED",
+        "CANCELLED", "COMMAND_LONG_ONLY", "COMMAND_INT_ONLY", "COMMAND_UNSUPPORTED_MAV_FRAME"
+    ]
+]
